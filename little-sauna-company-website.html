@@ -1,0 +1,1226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Little Sauna Company | Premium Outdoor Saunas & Backyard Spa Solutions</title>
+    <meta name="description" content="Expert-built outdoor saunas for Canadian winters. From our super-insulated Outpost line to complete backyard spa solutions. Peterborough & Kawartha Lakes.">
+    
+    <style>
+        /* CSS Reset & Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            /* Warm Natural Palette */
+            --forest-deep: #2d5016;
+            --forest-mid: #3a5a40;
+            --cedar-dark: #8B4513;
+            --cedar-light: #A0826D;
+            --honey: #D4A574;
+            --fire-glow: #E07A5F;
+            --fire-bright: #F4A261;
+            --sky-evening: #4A6FA5;
+            --cream: #FAF8F5;
+            --warm-white: #FEFDFB;
+            --soft-tan: #E8DED3;
+            --text-dark: #2C2C2C;
+            --text-medium: #5A5A5A;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', 'Arial', sans-serif;
+            color: var(--text-dark);
+            background: var(--warm-white);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Distinctive heading font with warmth */
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Garamond', 'Georgia', serif;
+            font-weight: 500;
+            letter-spacing: -0.02em;
+            color: var(--forest-deep);
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(250, 248, 245, 0.95);
+            backdrop-filter: blur(12px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(45, 80, 22, 0.08);
+            transition: all 0.3s ease;
+        }
+
+        nav.scrolled {
+            background: rgba(250, 248, 245, 0.98);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.04);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1.2rem 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo-svg {
+            height: 50px;
+            width: auto;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--forest-deep);
+            font-size: 0.95rem;
+            font-weight: 500;
+            letter-spacing: 0.02em;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--fire-glow);
+        }
+
+        .nav-links a.active::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: var(--fire-glow);
+        }
+
+        .nav-links a.disabled {
+            color: var(--text-medium);
+            cursor: default;
+            opacity: 0.6;
+        }
+
+        .nav-links a.disabled:hover {
+            color: var(--text-medium);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--forest-deep);
+            cursor: pointer;
+        }
+
+        /* Hero Video Section */
+        .hero-video {
+            position: relative;
+            height: 100vh;
+            min-height: 600px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-video video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            transform: translate(-50%, -50%);
+            object-fit: cover;
+        }
+
+        .hero-video-placeholder {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, var(--forest-mid) 0%, var(--forest-deep) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-video-placeholder::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                radial-gradient(circle at 20% 50%, rgba(212, 165, 116, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(224, 122, 95, 0.12) 0%, transparent 50%);
+            opacity: 0.6;
+        }
+
+        .hero-video-placeholder .placeholder-text {
+            position: relative;
+            color: var(--cream);
+            font-size: 1.2rem;
+            text-align: center;
+            font-weight: 300;
+            letter-spacing: 0.05em;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.3) 100%);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            color: white;
+            padding: 2rem;
+        }
+
+        .hero-tagline {
+            font-size: 4rem;
+            font-weight: 400;
+            margin-bottom: 1.5rem;
+            text-shadow: 0 2px 20px rgba(0,0,0,0.3);
+            line-height: 1.2;
+        }
+
+        .hero-subtext {
+            font-size: 1.3rem;
+            font-weight: 300;
+            letter-spacing: 0.03em;
+            opacity: 0.95;
+            text-shadow: 0 2px 15px rgba(0,0,0,0.4);
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 3rem;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
+        }
+
+        .scroll-indicator::after {
+            content: '↓';
+            color: white;
+            font-size: 2rem;
+            opacity: 0.7;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(10px); }
+        }
+
+        /* Section Base Styles */
+        section {
+            padding: 6rem 3rem;
+        }
+
+        .section-narrow {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .section-wide {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-header h2 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            font-weight: 400;
+        }
+
+        .section-header p {
+            font-size: 1.2rem;
+            color: var(--text-medium);
+            font-weight: 300;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .divider {
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(to right, var(--fire-glow), var(--fire-bright));
+            margin: 1.5rem auto;
+            border-radius: 2px;
+        }
+
+        /* Philosophy Section */
+        .philosophy {
+            background: var(--cream);
+            text-align: center;
+            padding: 4rem 3rem;
+        }
+
+        .philosophy-text {
+            font-size: 1.8rem;
+            font-weight: 300;
+            color: var(--forest-deep);
+            max-width: 900px;
+            margin: 0 auto;
+            line-height: 1.5;
+            font-style: italic;
+        }
+
+        /* Product Section Styles */
+        .product-section {
+            margin-bottom: 8rem;
+        }
+
+        .product-hero {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            margin-bottom: 4rem;
+        }
+
+        .product-image {
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            aspect-ratio: 4/3;
+        }
+
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .product-image:hover img {
+            transform: scale(1.05);
+        }
+
+        .product-image-placeholder {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--cedar-light) 0%, var(--cedar-dark) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--cream);
+            font-size: 1.1rem;
+        }
+
+        .product-content h3 {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+            color: var(--forest-deep);
+        }
+
+        .product-subtitle {
+            font-size: 1.1rem;
+            color: var(--fire-glow);
+            font-weight: 500;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            margin-bottom: 1.5rem;
+        }
+
+        .product-description {
+            font-size: 1.15rem;
+            line-height: 1.8;
+            color: var(--text-dark);
+            margin-bottom: 2rem;
+        }
+
+        .product-features {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+
+        .product-features li {
+            padding: 0.8rem 0;
+            padding-left: 2rem;
+            position: relative;
+            color: var(--text-dark);
+            font-size: 1.05rem;
+        }
+
+        .product-features li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--fire-glow);
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background: linear-gradient(135deg, var(--fire-glow) 0%, var(--fire-bright) 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: 500;
+            letter-spacing: 0.03em;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(224, 122, 95, 0.3);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(224, 122, 95, 0.4);
+        }
+
+        .cta-button-secondary {
+            background: transparent;
+            border: 2px solid var(--forest-deep);
+            color: var(--forest-deep);
+            box-shadow: none;
+        }
+
+        .cta-button-secondary:hover {
+            background: var(--forest-deep);
+            color: white;
+        }
+
+        /* Models Grid */
+        .models-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .model-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .model-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+        }
+
+        .model-image {
+            aspect-ratio: 16/10;
+            background: linear-gradient(135deg, var(--cedar-light) 0%, var(--cedar-dark) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--cream);
+        }
+
+        .model-content {
+            padding: 2rem;
+        }
+
+        .model-content h4 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .model-size {
+            color: var(--fire-glow);
+            font-weight: 500;
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+        }
+
+        .model-content p {
+            color: var(--text-medium);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* Spa Solutions Section */
+        .spa-solutions {
+            background: var(--forest-deep);
+            color: white;
+            padding: 8rem 3rem;
+        }
+
+        .spa-solutions .section-header h2,
+        .spa-solutions .section-header p {
+            color: white;
+        }
+
+        .spa-features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-top: 4rem;
+        }
+
+        .spa-feature {
+            text-align: center;
+        }
+
+        .spa-feature-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 1.5rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+        }
+
+        .spa-feature h4 {
+            font-size: 1.3rem;
+            margin-bottom: 0.8rem;
+            color: var(--honey);
+        }
+
+        .spa-feature p {
+            color: rgba(255, 255, 255, 0.85);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* Video Section */
+        .video-section {
+            background: var(--cream);
+            padding: 6rem 3rem;
+        }
+
+        .video-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            aspect-ratio: 16/9;
+            background: linear-gradient(135deg, var(--cedar-light) 0%, var(--cedar-dark) 100%);
+            border-radius: 8px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--cream);
+            font-size: 1.1rem;
+        }
+
+        /* Testimonials */
+        .testimonials {
+            padding: 6rem 3rem;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .testimonial-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+            position: relative;
+        }
+
+        .testimonial-stars {
+            color: var(--fire-bright);
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .testimonial-text {
+            font-size: 1.05rem;
+            line-height: 1.7;
+            color: var(--text-dark);
+            margin-bottom: 1.5rem;
+            font-style: italic;
+        }
+
+        .testimonial-author {
+            font-weight: 600;
+            color: var(--forest-deep);
+        }
+
+        /* Contact Section */
+        .contact {
+            background: var(--warm-white);
+            padding: 6rem 3rem;
+        }
+
+        .contact-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .contact-form {
+            background: white;
+            padding: 3rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 30px rgba(0,0,0,0.08);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--forest-deep);
+            font-size: 0.95rem;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 0.9rem;
+            border: 1px solid rgba(45, 80, 22, 0.2);
+            border-radius: 4px;
+            font-size: 1rem;
+            font-family: inherit;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--fire-glow);
+        }
+
+        .form-group textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 1.2rem;
+            background: linear-gradient(135deg, var(--fire-glow) 0%, var(--fire-bright) 100%);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 1.1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(224, 122, 95, 0.3);
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(224, 122, 95, 0.4);
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(45, 80, 22, 0.1);
+        }
+
+        .contact-item {
+            text-align: center;
+        }
+
+        .contact-item strong {
+            display: block;
+            color: var(--forest-deep);
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .contact-item a {
+            color: var(--fire-glow);
+            text-decoration: none;
+        }
+
+        .contact-item a:hover {
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--forest-deep);
+            color: white;
+            padding: 4rem 3rem 2rem;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-logo {
+            height: 40px;
+            margin-bottom: 1rem;
+        }
+
+        .footer-about p {
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.7;
+            margin-top: 1rem;
+        }
+
+        .footer-section h4 {
+            color: var(--honey);
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--fire-bright);
+        }
+
+        .footer-bottom {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .nav-container {
+                padding: 1rem 2rem;
+            }
+
+            .nav-links {
+                gap: 1.5rem;
+            }
+
+            .product-hero {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .models-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr 1fr;
+                gap: 2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .hero-tagline {
+                font-size: 2.5rem;
+            }
+
+            .hero-subtext {
+                font-size: 1.1rem;
+            }
+
+            section {
+                padding: 4rem 1.5rem;
+            }
+
+            .section-header h2 {
+                font-size: 2.5rem;
+            }
+
+            .product-content h3 {
+                font-size: 2rem;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-info {
+                flex-direction: column;
+                gap: 2rem;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Utility Classes */
+        .text-center {
+            text-align: center;
+        }
+
+        .mt-4 {
+            margin-top: 3rem;
+        }
+
+        .mb-4 {
+            margin-bottom: 3rem;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav id="mainNav">
+        <div class="nav-container">
+            <div class="logo-container">
+                <svg class="logo-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 595.5 842.25">
+                    <circle cx="297.638" cy="471.973" r="68.983" fill="#0a4776"/>
+                    <path d="M284.402 430.951c3.196-4.323 7.772-5.19 13.136-2.49 3.571 1.798 5.89-.423 3.225-3.088-.992-.992-3.373-1.195-14.004-1.195-7.045 0-13.35.208-14.011.461-1.748.671-1.475 1.587.632 2.116 1.01.253 2.92 1.83 4.246 3.504 2.896 3.656 4.466 3.816 6.776.692z" fill="#fff"/>
+                    <path d="M292.063 455.161c7.929-6.014 9.261-6.207 14.452-2.095 3.499 2.772 5.272 2.871 7.571.424.962-1.024 2.818-2.076 4.124-2.338 4.381-.879 5.037-1.219 5.037-2.614 0-.763-.541-1.596-1.203-1.849-1.453-.558-44.417-.627-44.417-.071 0 .214.292.984.649 1.71.357.726 1.279 2.628 2.049 4.225 1.459 3.024 4.147 4.996 6.883 5.048.878.018 3.062-1.081 4.855-2.44z" fill="#fff"/>
+                    <path d="M297.638 190.462h.028V29.518h-.028z" fill="#0a4776"/>
+                </svg>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home" class="active">Home</a></li>
+                <li><a href="#" class="disabled">The Outpost</a></li>
+                <li><a href="#" class="disabled">Prefab Saunas</a></li>
+                <li><a href="#" class="disabled">Spa Solutions</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <button class="mobile-menu-btn">☰</button>
+        </div>
+    </nav>
+
+    <!-- Hero Video Section -->
+    <section id="home" class="hero-video">
+        <div class="hero-video-placeholder">
+            <span class="placeholder-text">[ 15 Second Looping Video - To Be Added ]</span>
+        </div>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1 class="hero-tagline">Step into Wellness</h1>
+            <p class="hero-subtext">Handcrafted outdoor saunas for Canadian living</p>
+        </div>
+        <div class="scroll-indicator"></div>
+    </section>
+
+    <!-- Philosophy Section -->
+    <section class="philosophy">
+        <div class="section-narrow">
+            <p class="philosophy-text">
+                We are sauna enthusiasts who love the outdoor lifestyle. Every sauna we build reflects our commitment to quality, craftsmanship, and the wellness experience you deserve.
+            </p>
+        </div>
+    </section>
+
+    <!-- The Outpost Section -->
+    <section id="outpost" class="product-section">
+        <div class="section-wide">
+            <div class="product-hero">
+                <div class="product-image">
+                    <div class="product-image-placeholder">
+                        [ The Outpost Hero Image ]
+                    </div>
+                </div>
+                <div class="product-content">
+                    <p class="product-subtitle">Premium Line</p>
+                    <h3>The Outpost</h3>
+                    <div class="divider" style="margin-left: 0;"></div>
+                    <p class="product-description">
+                        Experience unparalleled warmth and comfort, even on the coldest winter nights. The Outpost represents our commitment to superior energy efficiency and traditional craftsmanship. Built to a modern standard for new construction—full stud walls, mineral wool insulation with aluminum vapour barrier, before your choice of interior siding. The sauna is then wrapped with exterior insulation, sheathing and air barrier before your choice of exterior siding. This is the best build-quality and insulation-level of any sauna on the market, guaranteeing comfort and the longevity of the building. This is truly a generational investment in family well-being.
+                    </p>
+                    <ul class="product-features">
+                        <li>Super-insulated for Canadian winters</li>
+                        <li>No drafts, deep cozy warmth</li>
+                        <li>Unparalleled energy efficiency</li>
+                        <li>Fully customizable interior & exterior finishes</li>
+                        <li>Built by expert carpenters who care</li>
+                    </ul>
+                    <a href="#contact" class="cta-button">Request a Quote</a>
+                </div>
+            </div>
+
+            <!-- The Outpost Models -->
+            <div class="models-grid">
+                <div class="model-card">
+                    <div class="model-image">
+                        [ 8x6 Model Image ]
+                    </div>
+                    <div class="model-content">
+                        <h4>The Compact</h4>
+                        <p class="model-size">8' × 6'</p>
+                        <p>Perfect for intimate spaces and couples. All the warmth and quality of The Outpost in a space-efficient design.</p>
+                    </div>
+                </div>
+                <div class="model-card">
+                    <div class="model-image">
+                        [ 8x8 Model Image ]
+                    </div>
+                    <div class="model-content">
+                        <h4>The Classic</h4>
+                        <p class="model-size">8' × 8'</p>
+                        <p>Our most popular model. Spacious enough for family and friends while maintaining an intimate atmosphere.</p>
+                    </div>
+                </div>
+                <div class="model-card">
+                    <div class="model-image">
+                        [ 12x8 Model Image ]
+                    </div>
+                    <div class="model-content">
+                        <h4>The Grand</h4>
+                        <p class="model-size">12' × 8'</p>
+                        <p>The ultimate sauna experience. We've taken the classic sauna and added a generous changeroom for your comfort and convenience.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Prefabricated Saunas Section -->
+    <section id="prefab" class="product-section" style="background: var(--cream);">
+        <div class="section-wide">
+            <div class="product-hero">
+                <div class="product-content">
+                    <p class="product-subtitle">Ready to Install</p>
+                    <h3>Prefabricated Saunas</h3>
+                    <div class="divider" style="margin-left: 0;"></div>
+                    <p class="product-description">
+                        Quality outdoor saunas available in a range of sizes and finishes. Our prefabricated line offers the perfect balance of convenience and craftsmanship, with expert site preparation and customization options that set us apart from typical sauna retailers.
+                    </p>
+                    <ul class="product-features">
+                        <li>Multiple sizes and wood types available</li>
+                        <li>Professional site preparation service</li>
+                        <li>Quick installation</li>
+                        <li>Customization options available</li>
+                        <li>Expert guidance from sauna enthusiasts</li>
+                    </ul>
+                    <a href="#contact" class="cta-button">Explore Options</a>
+                </div>
+                <div class="product-image">
+                    <div class="product-image-placeholder">
+                        [ Prefab Sauna Image ]
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Complete Spa Solutions -->
+    <section id="spa-solutions" class="spa-solutions">
+        <div class="section-wide">
+            <div class="section-header">
+                <h2>Complete Backyard Spa Solutions</h2>
+                <div class="divider"></div>
+                <p>Transform your outdoor space into a complete wellness retreat. We design and build integrated spa environments that combine saunas, cold plunge therapy, showers, and beautiful outdoor living spaces.</p>
+            </div>
+
+            <div class="spa-features-grid">
+                <div class="spa-feature">
+                    <div class="spa-feature-icon">🏗️</div>
+                    <h4>Custom Saunas</h4>
+                    <p>Perfectly integrated into your space with unlimited customization</p>
+                </div>
+                <div class="spa-feature">
+                    <div class="spa-feature-icon">🚿</div>
+                    <h4>Outdoor Showers</h4>
+                    <p>Premium materials built to withstand the elements while completing your experience</p>
+                </div>
+                <div class="spa-feature">
+                    <div class="spa-feature-icon">❄️</div>
+                    <h4>Cold Plunge Tubs</h4>
+                    <p>Professional-grade therapy tubs for optimal recovery and wellness</p>
+                </div>
+                <div class="spa-feature">
+                    <div class="spa-feature-icon">🌳</div>
+                    <h4>Decks & Pathways</h4>
+                    <p>Interconnecting spaces that create flow and ambiance</p>
+                </div>
+                <div class="spa-feature">
+                    <div class="spa-feature-icon">⛱️</div>
+                    <h4>Shade Structures</h4>
+                    <p>Pergolas and covered areas for year-round enjoyment</p>
+                </div>
+                <div class="spa-feature">
+                    <div class="spa-feature-icon">🪑</div>
+                    <h4>Seating Areas</h4>
+                    <p>Comfortable gathering spaces to relax before and after</p>
+                </div>
+            </div>
+
+            <div class="text-center mt-4">
+                <a href="#contact" class="cta-button">Design Your Retreat</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Video Section -->
+    <section class="video-section">
+        <div class="section-wide">
+            <div class="section-header">
+                <h2>See Our Craft in Action</h2>
+                <div class="divider"></div>
+            </div>
+            <div class="video-container">
+                [ YouTube Video Embed - To Be Added ]
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials">
+        <div class="section-wide">
+            <div class="section-header">
+                <h2>Our Happy Clients</h2>
+                <div class="divider"></div>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-stars">★★★★★</div>
+                    <p class="testimonial-text">
+                        "We love our sauna and outdoor shower. It's a heavenly little sanctuary nestled in the woods overlooking the lake. Dave and Sean worked with us to produce exactly what we had envisioned. The craftsmanship is impeccable."
+                    </p>
+                    <p class="testimonial-author">— Scott and Catherine R.</p>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-stars">★★★★★</div>
+                    <p class="testimonial-text">
+                        "We were unprepared for the extent that owning a sauna has changed our lives. We spend time together, unplugged and away from screens, having conversations or just enjoying the calm and quiet in each other's presence."
+                    </p>
+                    <p class="testimonial-author">— Gobinde S.</p>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-stars">★★★★★</div>
+                    <p class="testimonial-text">
+                        "I absolutely love my barrel sauna. The Little Building Company was great to work with from helping select the right sauna for us to delivery and installation. Being able to look out over the lake makes the experience even more relaxing."
+                    </p>
+                    <p class="testimonial-author">— Cindy B.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" style="background: var(--cream);">
+        <div class="section-narrow">
+            <div class="section-header">
+                <h2>About Us</h2>
+                <div class="divider"></div>
+            </div>
+            <div style="text-align: center; font-size: 1.1rem; line-height: 1.8; color: var(--text-dark);">
+                <p style="margin-bottom: 1.5rem;">
+                    The Little Sauna Company was founded by sauna enthusiasts who are also expert carpenters. This unique combination allows us to build higher quality saunas with unlimited customization options.
+                </p>
+                <p style="margin-bottom: 1.5rem;">
+                    We've created backyard retreats that include outdoor showers, pergolas, change rooms, and cold plunge therapy tubs to complement your sauna experience. Together, we can transform your space into an ideal wellness retreat for you and your family.
+                </p>
+                <p>
+                    <strong style="color: var(--forest-deep);">Visit us at The Cottage Corner</strong><br>
+                    Southeast corner of Hwy 28 and County Road 4<br>
+                    Just east of Peterborough, ON
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="contact-container">
+            <div class="section-header">
+                <h2>Let's Build Your Dream Sauna</h2>
+                <div class="divider"></div>
+                <p>Start your wellness journey today</p>
+            </div>
+
+            <form class="contact-form" id="contactForm">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="firstName">First Name *</label>
+                        <input type="text" id="firstName" name="firstName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="lastName">Last Name *</label>
+                        <input type="text" id="lastName" name="lastName" required>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="email">Email *</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone *</label>
+                        <input type="tel" id="phone" name="phone" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="location">Where are you located? *</label>
+                    <input type="text" id="location" name="location" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="interest">I'm interested in: *</label>
+                    <select id="interest" name="interest" required>
+                        <option value="">Select an option</option>
+                        <option value="outpost">The Outpost (Super-Insulated Custom)</option>
+                        <option value="prefab">Prefabricated Saunas</option>
+                        <option value="spa">Complete Spa Solution</option>
+                        <option value="other">Other / Not Sure</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="message">Tell us about your project *</label>
+                    <textarea id="message" name="message" required></textarea>
+                </div>
+
+                <button type="submit" class="submit-btn">Send Message</button>
+
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <strong>Phone</strong>
+                        <a href="tel:705-874-1040">705-874-1040</a>
+                    </div>
+                    <div class="contact-item">
+                        <strong>Email</strong>
+                        <a href="/cdn-cgi/l/email-protection#bcd5d2dad3fcd0d5c8c8d0d9cfddc9d2dddfd3d1ccddd2c592dfdd"><span class="__cf_email__" data-cfemail="deb7b0b8b19eb2b7aaaab2bbadbfabb0bfbdb1b3aebfb0a7f0bdbf">[email&#160;protected]</span></a>
+                    </div>
+                    <div class="contact-item">
+                        <strong>Location</strong>
+                        17 Indacom Dr, Lakefield ON
+                    </div>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-about">
+                <svg class="footer-logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 595.5 200">
+                    <circle cx="100" cy="100" r="68.983" fill="#fff"/>
+                    <path d="M86.764 58.951c3.196-4.323 7.772-5.19 13.136-2.49 3.571 1.798 5.89-.423 3.225-3.088-.992-.992-3.373-1.195-14.004-1.195-7.045 0-13.35.208-14.011.461-1.748.671-1.475 1.587.632 2.116 1.01.253 2.92 1.83 4.246 3.504 2.896 3.656 4.466 3.816 6.776.692z" fill="#0a4776"/>
+                </svg>
+                <p>Creating backyard wellness sanctuaries across Peterborough and the Kawartha Lakes. Expert craftsmanship meets sauna passion.</p>
+            </div>
+
+            <div class="footer-section">
+                <h4>Services</h4>
+                <ul class="footer-links">
+                    <li><a href="#">The Outpost</a></li>
+                    <li><a href="#">Prefabricated Saunas</a></li>
+                    <li><a href="#">Complete Spa Solutions</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h4>Company</h4>
+                <ul class="footer-links">
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h4>Connect</h4>
+                <ul class="footer-links">
+                    <li>17 Indacom Dr</li>
+                    <li>Lakefield, ON K0L 2H0</li>
+                    <li><a href="tel:705-874-1040">705-874-1040</a></li>
+                    <li><a href="/cdn-cgi/l/email-protection#e980878f86a985809d9d858c9a889c87888a868499888790c78a88"><span class="__cf_email__" data-cfemail="acc5c2cac3ecc0c5d8d8c0c9dfcdd9c2cdcfc3c1dccdc2d582cfcd">[email&#160;protected]</span></a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2026 The Little Sauna Company. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+        // Scroll navigation effect
+        const nav = document.getElementById('mainNav');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                if (href !== '#' && !this.classList.contains('disabled')) {
+                    e.preventDefault();
+                    const target = document.querySelector(href);
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 's
